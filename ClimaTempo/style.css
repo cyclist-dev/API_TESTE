@@ -1,0 +1,108 @@
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Exo 2', sans-serif; /* Fonte futurista */
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    transition: background-image 1s ease-in-out;
+    background-color: #0b0c10;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+.lang-switch {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+.lang-switch button {
+    background: rgba(0,0,0,0.5);
+    border: 1px solid #45a29e;
+    color: #fff;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+.lang-switch button:hover, .lang-switch button.active {
+    background: #45a29e;
+    box-shadow: 0 0 10px #45a29e; /* Brilho Neon */
+}
+
+
+.glass-container {
+    background: rgba(44, 43, 43, 0.195); /* Quase transparente */
+    backdrop-filter: blur(15px); /* O efeito de desfoque pesado */
+    -webkit-backdrop-filter: blur(15px);
+    padding: 2.5rem;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 400px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    text-align: center;
+}
+
+h2 { margin-bottom: 20px; letter-spacing: 2px; text-transform: uppercase; color: #66fcf1; text-shadow: 0 0 5px rgba(102, 252, 241, 0.5); }
+
+
+form { display: flex; gap: 10px; margin-bottom: 20px; }
+
+input {
+    flex: 1;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    outline: none;
+}
+input::placeholder { color: #c5c6c7; }
+
+button[type="submit"] {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(45deg, #45a29e, #66fcf1);
+    color: #0b0c10;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+button[type="submit"]:hover { transform: scale(1.05); box-shadow: 0 0 15px #66fcf1; }
+
+
+.city-list div {
+    background: rgba(0,0,0,0.4);
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: left;
+    border-left: 3px solid #66fcf1;
+}
+.city-list div:hover { background: rgba(102, 252, 241, 0.2); }
+
+.weather-box { display: none; margin-top: 20px; animation: slideUp 0.6s ease; }
+.temp { font-size: 4rem; font-weight: 700; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
+.desc { font-size: 1.2rem; color: #66fcf1; text-transform: uppercase; margin-bottom: 20px; }
+
+.details { display: flex; justify-content: space-between; background: rgba(0,0,0,0.2); padding: 15px; border-radius: 10px; }
+.detail-item { display: flex; flex-direction: column; }
+.detail-item span { font-size: 0.8rem; color: #c5c6c7; }
+
+
+body.padrao { background-image: url('img/img.jpg'); }
+body.ensolarado { background-image: url('img/sol.jpg'); }
+body.nublado { background-image: url('img/nublado.jpg'); }
+body.chuvoso { background-image: url('img/chuva.jpg'); }
+body.tempestade { background-image: url('img/raio.jpg'); }
+
+@keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }

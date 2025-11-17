@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Stack IBGE</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background: #2c3e50; color: #ecf0f1; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .card { background: #34495e; padding: 2rem; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); width: 350px; }
+        h2 { text-align: center; color: #e67e22; }
+        input { width: 100%; padding: 12px; margin: 10px 0; border: none; border-radius: 5px; box-sizing: border-box; }
+        button { width: 100%; padding: 12px; background: #e67e22; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        button:hover { background: #d35400; }
+        
+        /* Área onde os dados vão aparecer */
+        #resultado { margin-top: 20px; display: none; background: #2c3e50; padding: 15px; border-radius: 8px; border: 1px solid #e67e22; }
+        .item { margin: 5px 0; font-size: 0.9rem; }
+        strong { color: #f39c12; }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h2>📍 Localizador</h2>
+        <form id="formBusca">
+            <input type="text" id="campoCidade" placeholder="Digite a cidade..." required>
+            <button type="submit">Buscar Dados</button>
+        </form>
+
+        <div id="resultado">
+            </div>
+    </div>
+
+    <script>
+        // O Cérebro do Front-end
+        const formulario = document.getElementById('formBusca');
+        const divResultado = document.getElementById('resultado');
+
+        formulario.addEventListener('submit', function(event) {
+            // 1. Impede que a página recarregue (comportamento padrão de formulários)
+            event.preventDefault();
+            
+            const cidade = document.getElementById('campoCidade').value;
+            divResultado.style.display = 'block';
+            divResultado.innerHTML = 'Buscando...';
+
+            // 2. Chama nosso Back-end PHP
+            fetch('api.php?cidade=' + cidade)
+                .then(response => response.json()) // Converte a resposta para JSON
+                .then(dados => {
+                    
+                    if(dados.status === 'sucesso') {
+                        // 3. Atualiza o HTML com os dados recebidos
+                        const info = dados.dados;
+                        divResultado.innerHTML = `
+                            <div class="item"><strong>Cidade:</strong> ${info.cidade}</div>
+                            <div class="item"><strong>Estado:</strong> ${info.estado} (${info.sigla})</div>
+                            <div class="item"><strong>Região:</strong> ${info.regiao}</div>
+                            <div class="item"><strong>ID IBGE:</strong> ${info.id}</div>
+                        `;
+                    } else {
+                        divResultado.innerHTML = `<span style="color: #e74c3c">${dados.mensagem}</span>`;
+                    }
+
+                })
+                .catch(error => {
+                    console.error('Erro:', error);
+                    divResultado.innerHTML = 'Erro na conexão com a API.';
+                });
+        });
+    </script>
+</body>
+</html>

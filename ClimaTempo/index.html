@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Future Weather</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="padrao">
+
+    <div class="lang-switch">
+        <button onclick="setLanguage('pt')" class="active">🇧🇷 PT</button>
+        <button onclick="setLanguage('en')">🇺🇸 EN</button>
+    </div>
+
+    <div class="glass-container">
+        <h2 data-lang="titulo">Previsão do Tempo</h2>
+
+        <form id="searchForm">
+            <input type="text" id="cityInput" placeholder="Digite a cidade..." required>
+            <button type="submit">🔍</button>
+        </form>
+
+        <div id="cityList" class="city-list"></div>
+
+        <div id="weatherBox" class="weather-box">
+            <h3 id="cityName">--</h3>
+
+            <div class="main-info">
+                <div class="temp" id="tempDisplay">--°C</div>
+                <div class="desc" id="descDisplay">--</div>
+            </div>
+
+            <div class="details">
+                <div class="detail-item">
+                    <span>💧 <span data-lang="umidade">Umidade</span></span>
+                    <strong id="humidityDisplay">--%</strong>
+                </div>
+                <div class="detail-item">
+                    <span>💨 <span data-lang="vento">Vento</span></span>
+                    <strong id="windDisplay">-- km/h</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
