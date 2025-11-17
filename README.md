@@ -46,5 +46,5 @@ The focus was on establishing clear communication between Back-end and Front-end
 ---
 
 <div align="center">
-  Developed with 💜 by <strong>Marcela</strong>
+  Developed by <strong>Marcela Costa</strong>
 </div>
