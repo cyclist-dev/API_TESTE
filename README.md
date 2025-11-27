@@ -1,7 +1,7 @@
-# 🌦️ Future Weather / Previsão do Tempo
+# 🌦️ Previsão do Tempo
 
-> *[PT]* Um projeto Full Stack para consultar o clima em tempo real.
-> *[EN]* A Full Stack project to check real-time weather.
+>Um projeto Full Stack para consultar o clima em tempo real.
+
 
 ---
 
@@ -26,6 +26,9 @@ O foco foi criar uma comunicação limpa entre o Back-end e o Front-end, além d
 ---
 
 ## 🇺🇸 English (EN)
+
+#🌦️ Future Weather 
+>A Full Stack project to check real-time weather.
 
 ### 📖 About the Project
 This is a project developed to practice **Full Stack** skills. The goal was to create a website where users can check the weather for any city, and the interface "reacts" to it: the background changes automatically depending on whether it's sunny, raining, or cloudy.
